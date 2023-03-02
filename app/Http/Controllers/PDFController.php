@@ -22,19 +22,11 @@ class PDFController extends Controller
             $filename = $timeNow . '.jpg';
             $file->storeAs('public/', $filename);
             $data = array('imgname' => $filename);
-            // return view('pdf')->with($data);
             $pdf = PDF::loadView('pdf', $data);
             return $pdf->stream($timeNow . '.pdf');
 
 
         }
-
-    }
-
-    public function test()
-    {
-        $data = ['imgname' => "1677732828.jpg"];
-        return view('pdf', $data);
 
     }
 

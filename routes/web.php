@@ -25,4 +25,3 @@ Route::get('/convert', function () {
 Route::post('convert', [PDFController::class,'index']);
 Route::get('test', [PDFController::class,'test']);
 
-// Route::post('pdf',[PDFController::class,'pdf']);
