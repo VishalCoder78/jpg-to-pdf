@@ -20,14 +20,24 @@ class PDFController extends Controller
             $filename = $file->getClientOriginalName();
             $timeNow = time();
             $filename = $timeNow . '.jpg';
+            $pdfname = $timeNow . '.pdf';
             $file->storeAs('public/', $filename);
             $data = array('imgname' => $filename);
             $pdf = PDF::loadView('pdf', $data);
-            return $pdf->stream($timeNow . '.pdf');
-
+            $store = $pdf->stream($pdfname);
+            // $store = $pdf->storeAs('public/', $timeNow.'.pdf' );
+            Storage::put('public/' . $pdfname, $store);
+            $data = array('path' => $pdfname);
+            return view('viewpdf')->with($data);
 
         }
 
+    }
+    public function download($pdfname)
+    {
+        $filepath = public_path("storage/{$pdfname}");
+        return \Response::download($filepath);
+        
     }
 
 }

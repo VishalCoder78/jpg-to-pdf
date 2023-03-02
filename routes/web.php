@@ -21,7 +21,11 @@ Route::get('/', function () {
 Route::get('/convert', function () {
     return view('convert');
 });
+Route::get('/pdf', function () {
+    return view('viewpdf');
+});
 
 Route::post('convert', [PDFController::class,'index']);
-Route::get('test', [PDFController::class,'test']);
+Route::get('pdf', [PDFController::class,'index']);
+Route::get('/download/{pdfname}', [PDFController::class,"download"]);
 
