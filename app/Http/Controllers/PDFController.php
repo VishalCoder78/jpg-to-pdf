@@ -26,7 +26,6 @@ class PDFController extends Controller
             $data = array('imgname' => $filename);
             $pdf = PDF::loadView('pdf', $data);
             $store = $pdf->stream($pdfname);
-            // $store = $pdf->storeAs('public/', $timeNow.'.pdf' );
             Storage::put('public/' . $pdfname, $store);
             $data = array('path' => $pdfname);
             return view('viewpdf')->with($data);
