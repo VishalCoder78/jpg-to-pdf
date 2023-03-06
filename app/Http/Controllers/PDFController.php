@@ -40,13 +40,6 @@ class PDFController extends Controller
         return \Response::download($filepath);
         
     }
-    public function view($pdfname)
-    {
-        $filepath = public_path("storage/{$pdfname}");
-        return Response::make(($filepath), 200, [
-            'content-type'=>'application/pdf',
-        ]);
-        
-    }
+
 
 }
