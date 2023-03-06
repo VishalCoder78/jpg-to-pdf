@@ -28,4 +28,5 @@ Route::get('/pdf', function () {
 Route::post('convert', [PDFController::class,'index']);
 Route::get('pdf', [PDFController::class,'index']);
 Route::get('/download/{pdfname}', [PDFController::class,"download"]);
+Route::get('/view/{pdfname}', [PDFController::class,"view"]);
 

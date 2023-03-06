@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use Response;
 
 class PDFController extends Controller
 {
@@ -37,6 +38,14 @@ class PDFController extends Controller
     {
         $filepath = public_path("storage/{$pdfname}");
         return \Response::download($filepath);
+        
+    }
+    public function view($pdfname)
+    {
+        $filepath = public_path("storage/{$pdfname}");
+        return Response::make(($filepath), 200, [
+            'content-type'=>'application/pdf',
+        ]);
         
     }
 
